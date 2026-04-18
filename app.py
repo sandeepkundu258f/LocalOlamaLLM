@@ -3,6 +3,11 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_ollama import OllamaLLM
+import shutil
+
+if os.path.exists("./db"):
+    shutil.rmtree("./db")
+    print("Old database cleared to sync with current folder.")
 
 loader = PyPDFDirectoryLoader("./RAG_pdfs")
 docs = loader.load()
