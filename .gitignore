@@ -1,1 +1,4 @@
 /.venv
+RAG_pdfs/*.pdf
+models/
+db/
