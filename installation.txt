@@ -3,6 +3,8 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 
+hf download nomic-ai/nomic-embed-text-v1.5 --local-dir ./models/embedding_model
+
 
 `````````````````````````````````````````````````````````
 curl -fsSL https://ollama.com/install.sh | sh

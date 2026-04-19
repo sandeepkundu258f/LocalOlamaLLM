@@ -16,13 +16,13 @@ model_path = "./models/embedding_model"
 model_kwargs = {'device': 'cpu', 'local_files_only': True} # 'cpu' or 'cuda' if you have an NVIDIA GPU
 
 embeddings = HuggingFaceEmbeddings(
-    model_name="all-MiniLM-L6-v2",
+    model_name="nomic-ai/nomic-embed-text-v1.5",
     cache_folder=model_path,
     model_kwargs=model_kwargs
 )
 vectorstore = Chroma.from_documents(documents=docs, embedding=embeddings, persist_directory="./db")
 
-llm = OllamaLLM(model="gemma2:2b", num_thread=8)
+llm = OllamaLLM(model="mistral:7b", num_thread=8)
 
 while True:
     query = input("\nAsk about your PDFs (or type 'exit'): ")
