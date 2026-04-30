@@ -24,7 +24,14 @@ chown -R $SUDO_USER:$SUDO_USER models
 echo "Installing Ollama and pulling models..."
 curl -fsSL https://ollama.com/install.sh | sh
 
-ollama pull mistral:7b
-ollama pull gemma2:2b
+echo "Starting Ollama service and waiting for it to initialize..."
+# Ensure the service is started
+systemctl start ollama
+
+# 5-second delay to give the daemon time to bind to the port
+sleep 5
+
+sudo -u $SUDO_USER ollama pull mistral:7b
+sudo -u $SUDO_USER ollama pull gemma2:2b
 
 echo "Setup complete! You can now run the app with 'python app.py'"
