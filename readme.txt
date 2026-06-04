@@ -10,3 +10,5 @@ sudo systemctl daemon-reload
 
 # Restart the actual service
 sudo systemctl restart ollama
+
+-- Use distrobox is minimise clutter
